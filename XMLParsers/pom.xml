@@ -8,5 +8,52 @@
     <artifactId>XMLParsers</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics-runtime</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.11.0</version>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-basics</artifactId>
+                        <version>0.11.0</version>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-basics-annotate</artifactId>
+                        <version>1.0.2</version>
+                    </dependency>
+                </dependencies>
+
+                <executions>
+                    <execution>
+                        <id>generate-pojos</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <schemaDirectory>src/main/resources/xsd</schemaDirectory>
+                            <schemaIncludes>
+                                <schemaInclude>sampleXMLSchema.xsd</schemaInclude>
+                            </schemaIncludes>
+                            <generateDirectory>${project.build.directory}/model</generateDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
