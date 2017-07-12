@@ -1,18 +1,24 @@
-<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:noNamespaceSchemaLocation="../../../../resources/xsd/sampleXMLSchema.xsd">
-    <hat routingNum="123456" effDate="2002-04-02" lang="en-US">
-        <number>557</number>
-        <name>Ten-Gallon Hat</name>
-        <description>This is a great hat!</description>
-    </hat>
-    <umbrella routingNum="123" effDate="2002-04-02">
-        <number>557</number>
-        <name>Ten-Gallon Hat</name>
-    </umbrella>
-    <shirt routingNum="124" effDate="2002-04-02" sleeve="17">
-        <number>557</number>
-        <name>Short-Sleeved Linen Blouse</name>
-        <color value="blue"/>
-        <size system="US-DRESS">6</size>
-    </shirt>
-</items>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<shiporder orderid="889923"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../../../../resources/xsd/sampleXMLSchema.xsd">
+    <orderperson>John Smith</orderperson>
+    <shipto>
+        <name>Ola Nordmann</name>
+        <address>Langgt 23</address>
+        <city>4000 Stavanger</city>
+        <country>Norway</country>
+    </shipto>
+    <item>
+        <title>Empire Burlesque</title>
+        <note>Special Edition</note>
+        <quantity>1</quantity>
+        <price>10.90</price>
+    </item>
+    <!--<item>-->
+        <!--<title>Hide your heart</title>-->
+        <!--<quantity>1</quantity>-->
+        <!--<price>9.90</price>-->
+    <!--</item>-->
+</shiporder>

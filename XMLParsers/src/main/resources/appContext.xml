@@ -1,0 +1,64 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="XMLConverter" class="com.marst89.core.XMLConverter">
+        <property name="marshaller" ref="castorMarshaller" />
+        <property name="unmarshaller" ref="castorMarshaller" />
+    </bean>
+    <!--We should either set the targetClasses or have a mapping.xml and set this to mappingLocation property-->
+    <bean id="castorMarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
+        <property name="targetClasses">
+            <array>
+                <value>com.marst89.xml.Shiporder</value>
+            </array>
+        </property>
+    </bean>
+
+    <bean id="XMLConverterWithJAXB2" class="com.marst89.core.XMLConverter">
+        <property name="marshaller" ref="jaxb2Marshaller" />
+        <property name="unmarshaller" ref="jaxb2Marshaller" />
+    </bean>
+
+    <bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="classesToBeBound">
+            <list>
+                <value>com.marst89.xml.Shiporder</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- The below configuration is also ok-->
+    <!--<bean id="XMLConverterWithXstream" class="com.marst89.core.XMLConverter">-->
+        <!--<property name="marshaller" ref="xstreamMarshaller" />-->
+        <!--<property name="unmarshaller" ref="xstreamMarshaller" />-->
+    <!--</bean>-->
+
+    <bean id="XMLConverterWithXstream" class="com.marst89.core.XMLConverter">
+        <property name="marshaller" ref="xstreamMarshaller2" />
+        <property name="unmarshaller" ref="xstreamMarshaller2" />
+    </bean>
+
+    <bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+       <property name="annotatedClasses" value="com.marst89.modelForXstream.Shiporder"/>
+    </bean>
+
+    <bean id="xstreamMarshaller2" class="org.springframework.oxm.xstream.XStreamMarshaller">
+        <property name="aliases">
+            <map>
+                <entry key="shiporder" value="com.marst89.xml.Shiporder"/>
+            </map>
+        </property>
+        <property name="useAttributeFor">
+            <util:map key-type="java.lang.Class">
+                <entry key="com.marst89.xml.Shiporder">
+                <list>
+                    <value>orderid</value>
+                </list>
+                </entry>
+            </util:map>
+        </property>
+    </bean>
+
+</beans>
