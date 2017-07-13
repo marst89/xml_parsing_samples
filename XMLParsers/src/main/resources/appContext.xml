@@ -61,4 +61,13 @@
         </property>
     </bean>
 
+    <bean id="XMLConverterWithJaxbAndMoxy" class="com.marst89.core.XMLConverter">
+        <property name="marshaller" ref="jaxb2MarshallerWithMoxy" />
+        <property name="unmarshaller" ref="jaxb2MarshallerWithMoxy" />
+    </bean>
+
+    <bean id="jaxb2MarshallerWithMoxy" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="classesToBeBound" value="com.marst89.modelForXPath.Shiporder"/>
+    </bean>
+
 </beans>

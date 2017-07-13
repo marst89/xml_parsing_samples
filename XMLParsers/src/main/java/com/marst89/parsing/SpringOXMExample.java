@@ -39,5 +39,13 @@ public class SpringOXMExample {
         System.out.println("Using xstream marshaller");
         System.out.println(shiporder2.getOrderid());
         System.out.println(shiporder2.getOrderperson());
+
+        //Testing Spring OXM with jaxb2marshaller and Eclipse Moxy integration
+        XMLConverter withMoxyMarshaller = (XMLConverter) appContext.getBean("XMLConverterWithJaxbAndMoxy");
+        com.marst89.modelForXPath.Shiporder shiporder3 = (com.marst89.modelForXPath.Shiporder) withMoxyMarshaller.convertFromXMLToObject(XML_FILE_NAME);
+        System.out.println("Using jaxb2marshaller and eclipse moxy");
+        System.out.println(shiporder3.getOrderid());
+        System.out.println(shiporder3.getOrderperson());
+        System.out.println(shiporder3.getDestinationCity());
     }
 }

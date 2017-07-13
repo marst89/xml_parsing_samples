@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<person>
+    <firstname>Barok</firstname>
+    <lastname>Obama</lastname>
+    <age>52</age>
+    <car>
+        <model>Green Ford Focus 1.4L</model>
+    </car>
+</person>
